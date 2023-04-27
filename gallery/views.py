@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from gallery.models import Photograph
 
 def index(request):
-    photos = Photograph.objects.all()
+    photos = Photograph.objects.order_by('date').filter(published=True)
     return render(request, 'gallery/index.html', {
         "cards": photos
     })
