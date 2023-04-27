@@ -41,27 +41,22 @@
                 </nav>
             </section>
             <section class="galeria" style="margin-left: 5em">
-                <form action="" method="">
+                <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
                     <div class="row">
-                        <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
-                            <label for="register_name" style="color:#D9D9D9; margin-bottom: 5px;"><b>Full Name</b></label>
-                            <input type="text" class="form-control" name="register_name" placeholder="Ex.: John Doe" required>
+                      {% for field in form.visible_fields %}
+                        <div class="col-12 col-lg-12" style="margin-bottom: 10px">
+                          <label for="{{ field.id_for_label }}" style="color:#D9D9D9; margin-bottom: 5px;">
+                            {{ field.label }}
+                          </label>
+                          {{ field }}
                         </div>
-                        <div class="col-12 col-lg-12" style="margin-bottom: 10px;">
-                            <label for="email" style="color:#D9D9D9; margin-bottom: 5px;"><b>Email</b></label>
-                            <input type="email" class="form-control" name="email" placeholder="Ex.: johndoe@test.com" required>
-                        </div>
-                        <div class="col-12 col-lg-6" style="margin-bottom: 10px;">
-                            <label for="password1" style="color:#D9D9D9; margin-bottom: 5px;"><b>Password</b></label>
-                            <input type="password" class="form-control" name="password1" placeholder="Your password" required>
-                        </div>
-                        <div class="col-12 col-lg-6" style="margin-bottom: 10px;">
-                            <label for="password2" style="color:#D9D9D9; margin-bottom: 5px;"><b>Confirm password</b></label>
-                            <input type="password" class="form-control" name="password2" placeholder="Your password again" required>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button class="btn btn-success col-12" style="padding: top 5px;" type="submit">Create Account</button>
-                        </div>
+                      {% endfor %}
+                    </div>
+                    <div>
+                      <button type="submit" class="btn btn-success col-12" style="padding: top 5px;">
+                        Register
+                      </button>
                     </div>
                 </form>
             </section>
