@@ -25,23 +25,27 @@
                     <div class="cards">
                         <h2 class="cards__titulo">Search through the gallery</h2>
                         <ul class="cards__lista">
-                            {% for photo_id, info in cards.items %}
+                          {% if cards %}
+                            {% for photo in cards %}
                             <li class="card">
-                                <a href="{% url 'imagem' %}">
-                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/carina-nebula.png' %}" alt="foto">
+                                <a href="{% url 'imagem' photo.id %}">
+                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/' %}{{ photo.photo }}" alt="foto">
                                 </a>
                                 <span class="card__tag">Stars</span>
                                 <div class="card__info">
-                                    <p class="card__titulo">{{ info.name }}</p>
+                                    <p class="card__titulo">{{ photo.name }}</p>
                                     <div class="card__texto">
-                                        <p class="card__descricao">{{ info.caption }}</p>
+                                        <p class="card__descricao">{{ photo.caption }}</p>
                                         <span>
-                                            <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="ícone de coração">
+                                            <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="heart icon">
                                         </span>
                                     </div>
                                 </div>
                             </li>
                             {% endfor %}
+                          {% else %}
+                            <p>No photos found.</p>
+                          {% endif %}
                         </ul>
                     </div>
                 </section>
