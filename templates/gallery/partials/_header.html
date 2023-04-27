@@ -3,7 +3,7 @@
 <header class="cabecalho">
     <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Alura Space Logo" />
     {% for message in messages %}
-      <div>
+      <div class="alert alert-primary">
         <p id="messages">{{ message }}</p>
       </div>
     {% endfor %}
