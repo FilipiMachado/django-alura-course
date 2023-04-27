@@ -32,7 +32,7 @@
                                   {% if photo.photo == "" or photo.photo == null %}
                                     <img class="card__imagem" src="{% static '/assets/imagens/galeria/image-not-found.png' %}" alt="foto">
                                   {% else %}
-                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/image-not-found.pngc' %}" alt="foto">
+                                    <img class="card__imagem" src="{{ photo.photo.url }}" alt="foto">
                                   {% endif %}
                                 </a>
                                 <span class="card__tag">Stars</span>
