@@ -4,8 +4,12 @@
     <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Alura Space Logo" />
     <div class="cabecalho__busca">
         <div class="busca__fundo">
-            <input class="busca__input" type="text" placeholder="What are you looking for?">
-            <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png' %}" alt="search icon">
+            <form action="{% url 'search' %}">
+              <input class="busca__input" type="text" name="search" placeholder="What are you looking for?">
+              <button type="submit">
+                <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png' %}" alt="search icon">
+              </button>
+            </form>
         </div>
     </div>
 </header>

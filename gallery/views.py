@@ -13,3 +13,15 @@ def image(request, photo_id):
     return render(request, 'gallery/imagem.html', {
         "photograph": photograph
     })
+    
+def search(request):
+    photos = Photograph.objects.order_by('date').filter(published=True)
+    
+    if 'search' in request.GET:
+        name_to_search = request.GET['search']
+        if name_to_search:
+            photos = photos.filter(name__icontains=name_to_search)
+    
+    return render(request, 'gallery/buscar.html', {
+        'cards': photos,
+    })
