@@ -40,10 +40,6 @@ def register(request):
         form = RegisterForm(request.POST)
         
         if form.is_valid():
-            if form['password_1'].value() != form['password_2'].value():
-                messages.error(request, "Passwords won't match!")
-                return redirect('register')
-            
             name = form['register_name'].value()
             email = form['email'].value()
             password = form['password_1'].value()
