@@ -18,20 +18,7 @@
 
 <body>
     <div class="pagina-inicial">
-        <header class="cabecalho">
-            <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Alura Space Logo" />
-            {% include 'gallery/partials/_alerts.html'%}
-            <div class="cabecalho__busca">
-                <div class="busca__fundo">
-                    <form action="{% url 'search' %}">
-                        <input  class="busca__input" type="text" name="search" placeholder="What are you looking for?">
-                        <button type="submit">
-                            <img class="busca__icone" src="{% static '/assets/ícones/1x/search.png' %}" alt="search icon">
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </header>
+        {% include 'partials/_header.html' %}
         <main class="principal">
             <section class="menu-lateral">
                 <nav class="menu-lateral__navegacao">
@@ -65,4 +52,4 @@
     </div>
 </body>
 
-{% include 'gallery/partials/_footer.html' %}
+{% include 'partials/_footer.html' %}
