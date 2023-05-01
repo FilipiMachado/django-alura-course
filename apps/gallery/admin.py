@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from gallery.models import Photograph
+from apps.gallery.models import Photograph
 
 class PhotosList(admin.ModelAdmin):
     list_display = ('id', 'name', 'caption', 'published')
