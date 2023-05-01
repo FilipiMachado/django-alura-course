@@ -9,7 +9,7 @@
             {% include 'partials/_navbar.html' %}
             <section class="conteudo">
                 <section class="banner">
-                    <img class="banner__imagem" src="{% static '/assets/imagens/Banner(2).png' %}" alt="banner Alura Space">
+                    <img class="banner__imagem" src="{% static 'assets/imagens/Banner(2).png' %}" alt="banner Alura Space">
                     <h1 class="banner__titulo">The most amazing space photos gallery!</h1>
                 </section>
                 <section class="tags">
@@ -30,7 +30,7 @@
                             <li class="card">
                                 <a href="{% url 'imagem' photo.id %}">
                                   {% if photo.photo == "" or photo.photo == null %}
-                                    <img class="card__imagem" src="{% static '/assets/imagens/galeria/image-not-found.png' %}" alt="foto">
+                                    <img class="card__imagem" src="{% static 'assets/imagens/galeria/image-not-found.png' %}" alt="foto">
                                   {% else %}
                                     <img class="card__imagem" src="{{ photo.photo.url }}" alt="foto">
                                   {% endif %}
@@ -41,7 +41,7 @@
                                     <div class="card__texto">
                                         <p class="card__descricao">{{ photo.caption }}</p>
                                         <span>
-                                            <img src="{% static '/assets/ícones/1x/favorite_outline.png' %}" alt="heart icon">
+                                            <img src="{% static 'assets/ícones/1x/favorite_outline.png' %}" alt="heart icon">
                                         </span>
                                     </div>
                                 </div>
