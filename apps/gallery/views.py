@@ -36,3 +36,12 @@ def search(request):
     return render(request, 'gallery/buscar.html', {
         'cards': photos,
     })
+
+def new_image(request):
+    pass
+
+def edit_image(request):
+    pass
+
+def delete_image(request):
+    pass
