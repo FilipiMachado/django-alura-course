@@ -17,7 +17,7 @@ def index(request):
 
 def image(request, photo_id):
     photograph = get_object_or_404(Photograph, pk=photo_id)
-    return render(request, 'gallery/imagem.html', {
+    return render(request, 'gallery/image.html', {
         "photograph": photograph
     })
     
@@ -33,15 +33,15 @@ def search(request):
         if name_to_search:
             photos = photos.filter(name__icontains=name_to_search)
     
-    return render(request, 'gallery/buscar.html', {
+    return render(request, 'gallery/search.html', {
         'cards': photos,
     })
 
 def new_image(request):
-    pass
+    return render(request, 'gallery/new-image.html')
 
 def edit_image(request):
-    pass
+    return render(request, 'gallery/edit-image.html')
 
 def delete_image(request):
-    pass
+    return render(request, 'gallery/delete-image.html')
