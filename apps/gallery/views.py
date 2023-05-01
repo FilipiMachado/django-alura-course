@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from apps.gallery.models import Photograph
+from apps.gallery.forms import PhotoForm
 
 from django.contrib import messages
 
@@ -38,7 +39,10 @@ def search(request):
     })
 
 def new_image(request):
-    return render(request, 'gallery/new-image.html')
+    form = PhotoForm
+    return render(request, 'gallery/new-image.html', {
+        'form': form
+    })
 
 def edit_image(request):
     return render(request, 'gallery/edit-image.html')
