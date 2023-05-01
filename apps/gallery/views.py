@@ -34,7 +34,7 @@ def search(request):
         if name_to_search:
             photos = photos.filter(name__icontains=name_to_search)
     
-    return render(request, 'gallery/search.html', {
+    return render(request, 'gallery/index.html', {
         'cards': photos,
     })
 
@@ -77,4 +77,11 @@ def delete_image(request, photo_id):
     messages.success(request, 'Image deleted successfully!')
     
     return redirect('index')
+
+def filter(request, category):
+    photos = Photograph.objects.order_by('date').filter(published=True, category=category)
+    
+    return render(request, 'gallery/index.html', {
+        "cards": photos
+    })
     
