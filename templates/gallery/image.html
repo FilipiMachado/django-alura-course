@@ -2,6 +2,19 @@
 
 {% load static %}
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alura Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="{% static '/styles/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
 {% block content %}
     <div class="pagina-inicial">
         {% include 'partials/_header.html' %}
@@ -20,6 +33,18 @@
                                 <p class="imagem__titulo">{{ photograph.name }}</p>
                                 <p class="imagem__descricao">{{ photograph.caption }}</p>
                                 <p class="imagem__texto">{{ photograph.description }}</p>
+                            </div>
+                            <div>
+                                <a href="{% url 'edit_image' photograph.id %}">
+                                  <button class="btn btn-success col-12" style="padding: top 5px;">
+                                    Edit
+                                  </button>
+                                </a>
+                                <a href="{% url 'delete_image' photograph.id %}">
+                                  <button class="btn btn-danger col-12" style="padding: top 5px;">
+                                    Delete
+                                  </button>
+                                </a>
                             </div>
                         </div>
                     </div>

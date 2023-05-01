@@ -39,13 +39,42 @@ def search(request):
     })
 
 def new_image(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "You are not logged in!")
+        return redirect('login')
+    
     form = PhotoForm
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'New image registered!')
+            return redirect('index')
+            
     return render(request, 'gallery/new-image.html', {
         'form': form
     })
 
-def edit_image(request):
-    return render(request, 'gallery/edit-image.html')
+def edit_image(request, photo_id):
+    photo = Photograph.objects.get(id=photo_id)
+    form = PhotoForm(instance=photo)
+    
+    if request.method == 'POST':
+        form = PhotoForm(request.POST, request.FILES, instance=photo)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Image updated successfully!')
+            return redirect('index')
+    
+    return render(request, 'gallery/edit-image.html', {
+        'form': form,
+        'photo_id': photo_id
+    })
 
-def delete_image(request):
-    return render(request, 'gallery/delete-image.html')
+def delete_image(request, photo_id):
+    photo = Photograph.objects.get(id=photo_id)
+    photo.delete()
+    messages.success(request, 'Image deleted successfully!')
+    
+    return redirect('index')
+    
